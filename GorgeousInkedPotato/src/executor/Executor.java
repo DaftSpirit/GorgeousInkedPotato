@@ -33,11 +33,13 @@ public class Executor {
 			
 			osw.write("abcd");
 			
+			//System.out.println("je commence à lire");
+			
 			while ((line = br.readLine()) != null) {
 				System.out.println(line);
 			}
 
-			System.out.println("j'ai fini de lire");
+			//System.out.println("j'ai fini de lire");
 			
 			osw.close();
 
