@@ -4,30 +4,42 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 
 public class Executor {
 
 	/**
-	 * boulou
+	 * runs sclang and tries to write "s.boot;" on standard input of sclang
 	 * @authors Joris
-	 * @param args name of the command and options we want to execute
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Runtime runtime = Runtime.getRuntime();
 		try {
-			//runtime.exec(new String[] {"sclang"});
 			System.out.println("je lance le prog : sclang");
-		    Process process = runtime.exec(new String[] {"sclang"});
-		    InputStream is = process.getInputStream();
-		    InputStreamReader isr = new InputStreamReader(is);
-		    BufferedReader br = new BufferedReader(isr);
-		    String line;
+			String[] arg = { "/bin/sh", "-c", "sclang" };
+			Process process = runtime.exec(arg);
 
-		    while ((line = br.readLine()) != null) {
-		    	System.out.println(line);
-		    }
+			// recuperation de l'inputstream (sortie de sclang)
+			InputStream is = process.getInputStream();
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			String line;
+
+			// recuperation de l'ouputstream (entree de sclang)
+			OutputStream os = process.getOutputStream();
+			OutputStreamWriter osw = new OutputStreamWriter(os);
+			
+			osw.write("{SinOsc.ar(440,0.2,0.6)}.play;");
+			
+			while ((line = br.readLine()) != null) {
+				System.out.println(line);
+			}
+			
+			osw.close();
+
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
