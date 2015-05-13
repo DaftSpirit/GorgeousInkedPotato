@@ -26,16 +26,18 @@ public class Executor {
 			InputStreamReader isr = new InputStreamReader(is);
 			BufferedReader br = new BufferedReader(isr);
 			String line;
-
+			
 			// recuperation de l'ouputstream (entree de sclang)
 			OutputStream os = process.getOutputStream();
 			OutputStreamWriter osw = new OutputStreamWriter(os);
 			
-			osw.write("{SinOsc.ar(440,0.2,0.6)}.play;");
+			osw.write("abcd");
 			
 			while ((line = br.readLine()) != null) {
 				System.out.println(line);
 			}
+
+			System.out.println("j'ai fini de lire");
 			
 			osw.close();
 
