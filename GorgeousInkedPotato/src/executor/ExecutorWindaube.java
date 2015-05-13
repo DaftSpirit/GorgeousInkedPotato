@@ -1,8 +1,6 @@
 package executor;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -12,23 +10,30 @@ import java.io.OutputStreamWriter;
 
 public class ExecutorWindaube {
 
-	protected OutputStream os;
-	private ByteArrayOutputStream baos = new ByteArrayOutputStream ();
-	private DataOutputStream output = new DataOutputStream (baos);
-	
+
 	
 	/**
 	 * 
-	 * @authors Joris
+	 * @authors dfgdfg
 	 * @param args name of the command and options we want to execute
 	 */
 	public static void main(String[] args) {
 		
 		Runtime runtime = Runtime.getRuntime();
 		try {
-			Process process = runtime.exec(new String[] { "D:\\Applications\\SuperCollider-3.6.6\\sclang.exe"} );
+			
+			String[] cmd = { "cmd.exe", "/C", "D:\\Applications\\SuperCollider-3.6.6\\sclang.exe" };
+			final Process process = runtime.exec(cmd);
+			
+			
+			// Lancement du process sclang
+			//Process process = runtime.exec(new String[] { "D:\\Applications\\SuperCollider-3.6.6\\sclang.exe"} );
+			
+			// Récupération des streams Entrée / Sortie
 			OutputStream os = process.getOutputStream();
 			InputStream is = process.getInputStream();
+			
+			// Lecture du InputStream
 			InputStreamReader isr = new InputStreamReader(is);
 			BufferedReader br = new BufferedReader(isr);
 			
@@ -46,7 +51,8 @@ public class ExecutorWindaube {
 			e.printStackTrace();
 		}
 		
-	
+		
+		
 	}
 
 }
