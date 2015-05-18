@@ -50,9 +50,8 @@ public class ExecutorWindaube {
 			Reader r = new Reader(process);
 			System.out.println(r);
 			
-			Thread.sleep(20000);
+			//Thread.sleep(2000);
 			
-			process.destroy();
 			
 		} catch (IOException e) {
 			System.out.println("Ca a foiré !!!");			

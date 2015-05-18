@@ -14,7 +14,7 @@ public class Writer implements Runnable{
 	public Writer(Process p) throws IOException {
 		this.process = p;
 		osw = new OutputStreamWriter(process.getOutputStream());
-		new Thread(this).start();
+		new Thread().start();
 	}
 	
 	public void run() {
