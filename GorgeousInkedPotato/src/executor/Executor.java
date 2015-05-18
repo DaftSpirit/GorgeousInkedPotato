@@ -40,10 +40,6 @@ public class Executor {
 			}
 
 			//System.out.println("j'ai fini de lire");
-			
-			osw.close();
-
-
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
