@@ -16,34 +16,18 @@ public class Executor {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Runtime runtime = Runtime.getRuntime();
-		try {
 			System.out.println("je lance le prog : sclang");
+			
 			String[] arg = { "/bin/sh", "-c", "sclang" };
-			Process process = runtime.exec(arg);
-
-			// recuperation de l'inputstream (sortie de sclang)
-			InputStream is = process.getInputStream();
-			InputStreamReader isr = new InputStreamReader(is);
-			BufferedReader br = new BufferedReader(isr);
-			String line;
 			
-			// recuperation de l'ouputstream (entree de sclang)
-			OutputStream os = process.getOutputStream();
-			OutputStreamWriter osw = new OutputStreamWriter(os);
-			
-			osw.write("abcd");
-			
-			//System.out.println("je commence à lire");
-			
-			while ((line = br.readLine()) != null) {
-				System.out.println(line);
+			Process process;
+			try {
+				process = runtime.exec(arg);
+				Reader reader = new Reader(process);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-
-			//System.out.println("j'ai fini de lire");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 }
