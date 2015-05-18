@@ -33,13 +33,17 @@ public class Reader implements Runnable{
 		InputStreamReader isr = new InputStreamReader(is);
 		BufferedReader br = new BufferedReader(isr);
 		String line;
-		
-		try {
-			while ((line = br.readLine()) != null) {
-				System.out.println(line);
+		while(true){		
+			try {
+				Thread.sleep(350);
+				while ((line = br.readLine()) != null) {
+					System.out.println(line);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 	}
 }

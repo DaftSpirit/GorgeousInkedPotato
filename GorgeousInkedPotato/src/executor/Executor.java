@@ -19,7 +19,14 @@ public class Executor {
 			try {
 				process = runtime.exec(arg);
 				Reader reader = new Reader(process);
+				Writer writer = new Writer(process);
+				Thread.sleep(5000);
+				writer.setString("yolo.postln;");
+				writer.send();
 			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
