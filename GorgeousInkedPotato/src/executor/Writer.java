@@ -3,24 +3,47 @@ package executor;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.Scanner;
 
 public class Writer implements Runnable{
 	
 	private Process process;
+	private Scanner sc;
+	private OutputStreamWriter osw;
+	
 	private String mess;
 	
-	private OutputStreamWriter osw;
 	
 	public Writer(Process p) throws IOException {
 		this.process = p;
-		osw = new OutputStreamWriter(process.getOutputStream());
+		this.sc = new Scanner(System.in);
+		this.osw = new OutputStreamWriter(process.getOutputStream());
+		
 		new Thread().start();
 	}
 	
 	public void run() {
-		
+		while(true)
+		{
+			trytoWrite();
+		}
 	}
 	
+	private void trytoWrite() {
+		
+		System.out.println("Veuillez saisir un mot :");
+		String str = sc.nextLine();
+		System.out.println("Vous avez saisi : " + str);
+		this.setString(str);
+		try {
+			this.send();
+		} catch (IOException e) {
+			System.out.println("nul");
+			e.printStackTrace();
+		}
+		
+	}
+
 	public void send() throws IOException {
 		osw.write(mess);				
 	}
