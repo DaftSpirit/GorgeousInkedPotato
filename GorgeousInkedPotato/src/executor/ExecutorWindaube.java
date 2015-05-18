@@ -16,8 +16,9 @@ public class ExecutorWindaube {
 	 * 
 	 * @authors dfg
 	 * @param args name of the command and options we want to execute
+	 * @throws InterruptedException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 		
 		Runtime runtime = Runtime.getRuntime();
@@ -32,23 +33,26 @@ public class ExecutorWindaube {
 			
 			// Récupération des streams Entrée / Sortie
 			//OutputStream os = process.getOutputStream();
-			InputStream is = process.getInputStream();
+			//InputStream is = process.getInputStream();
 			
 			// Lecture du InputStream
-			InputStreamReader isr = new InputStreamReader(is);
-			BufferedReader br = new BufferedReader(isr);
+			//InputStreamReader isr = new InputStreamReader(is);
+			//BufferedReader br = new BufferedReader(isr);
 			
 			//OutputStreamWriter osw = new OutputStreamWriter(os);
 			//osw.write("s.boot;");
 			
-			//Writer w = new Writer ();
-			//w.setString("s.boot");
-			//w.run(process);
+			Writer w = new Writer (process);
+			w.setString("s.boot");
+			w.send();
+
 			
+			Reader r = new Reader(process);
+			System.out.println(r);
 			
-			String s;
-			while((s=br.readLine())!=null)
-				System.out.println(s);
+			Thread.sleep(20000);
+			
+			process.destroy();
 			
 		} catch (IOException e) {
 			System.out.println("Ca a foiré !!!");			

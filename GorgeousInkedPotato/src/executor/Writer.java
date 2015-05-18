@@ -1,47 +1,38 @@
 package executor;
 
-import java.io.BufferedReader;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
-public class Writer {
+public class Writer implements Runnable{
+	
+	private Process process;
+	private String mess;
 	
 	private OutputStreamWriter osw;
-	private String s;
 	
-	public Writer() throws IOException {
-		new Thread() {
-
-		}.start();
+	public Writer(Process p) throws IOException {
+		this.process = p;
+		osw = new OutputStreamWriter(process.getOutputStream());
+		new Thread(this).start();
 	}
 	
-	public void run(final Process process) {
-		try {
-			osw = new OutputStreamWriter(process.getOutputStream());
-			try {
-				write();
-			} finally {
-				osw.close();
-			}
-		} catch(IOException ioe) {
-			ioe.printStackTrace();
-		}
+	public void run() {
+		
 	}
 	
-	public void write() throws IOException {
-		osw.write(s);				
+	public void send() throws IOException {
+		osw.write(mess);				
 	}
 	
 	public void setString(String _s)
 	{
-		s=_s;
+		mess=_s;
 	}
 	
 	public String getString()
 	{
-		return s;
+		return mess;
 	}
 	
 	
