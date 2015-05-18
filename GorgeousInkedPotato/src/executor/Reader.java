@@ -32,8 +32,14 @@ public class Reader implements Runnable{
 		InputStream is = process.getInputStream();
 		InputStreamReader isr = new InputStreamReader(is);
 		BufferedReader br = new BufferedReader(isr);
-		while(true){		
-			tryToRead(isr, br);
+		while(true){	
+			try {
+				Thread.sleep(350);
+				tryToRead(isr, br);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	
