@@ -23,6 +23,7 @@ public class Reader implements Runnable{
 		this.process = process;
 		new Thread(this).start();
 	}
+	
 	/**
 	 * implementation of method run from Runnable
 	 */
