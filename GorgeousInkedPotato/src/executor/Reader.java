@@ -37,7 +37,6 @@ public class Reader implements Runnable{
 				Thread.sleep(350);
 				tryToRead(isr, br);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
