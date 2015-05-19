@@ -32,11 +32,25 @@ public class ExecutorWindaube {
 			// Lancement du process sclang
 			//Process process = runtime.exec(new String[] { "D:\\Applications\\SuperCollider-3.6.6\\sclang.exe"} );
 			
-			Reader r = new Reader(process);
+			//Reader r = new Reader(process);
+			//r.run();
 			
-			Writer w = new Writer (process);
-			w.run();
+			
+			//synchronized(r)
+			//{
 
+				Writer w = new Writer (process);
+				//w.run();
+			//}
+
+				
+				InputStream is = process.getInputStream();
+				InputStreamReader isr = new InputStreamReader(is);
+				BufferedReader br = new BufferedReader(isr);
+				String line;
+				while ((line = br.readLine()) != null) {
+					System.out.println(line);
+				}
 			
 			
 		

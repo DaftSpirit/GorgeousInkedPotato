@@ -1,7 +1,9 @@
 package executor;
 
 
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Scanner;
 
@@ -10,20 +12,45 @@ public class Writer implements Runnable{
 	private Process process;
 	private Scanner sc;
 	private OutputStreamWriter osw;
+	private BufferedWriter bw;
 	
 	private String mess;
 	
 	
-	public Writer(Process p) throws IOException {
+	public Writer(final Process p) throws IOException {
+		
 		this.process = p;
 		this.sc = new Scanner(System.in);
-		this.osw = new OutputStreamWriter(process.getOutputStream());
+		//this.osw = new OutputStreamWriter(process.getOutputStream());
+		//bw = new BufferedWriter(osw);
+		//new Thread().start();
 		
-		new Thread().start();
+		// A REFAIRE AVEC UN SCANNER DANS LE RUN ET SYNCRO AVEC LES DEUX
+		new Thread() {
+			public void run() {
+				try {
+					BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(p.getOutputStream()));
+					try {
+						String str = sc.nextLine();
+						
+						
+						bw.write(str+"\n");
+						//bw.write("f = {{SinOsc.ar(440,0,0.8)}.play};\n");
+						//bw.write("s.waitForBoot(f);\n");
+					} finally {
+						bw.close();
+					}
+				} catch(IOException ioe) {
+					ioe.printStackTrace();
+				}
+			}
+		}.start();
+		
+		
 	}
 	
 	public void run() {
-		while(true)
+		//while(true)
 		{
 			trytoWrite();
 		}
@@ -45,7 +72,7 @@ public class Writer implements Runnable{
 	}
 
 	public void send() throws IOException {
-		osw.write(mess);				
+		bw.write(mess);				
 	}
 	
 	public void setString(String _s)
