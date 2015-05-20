@@ -6,102 +6,89 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Scanner;
 
 public class Writer implements Runnable{
 	
 	private Process process;
-	private Scanner sc;
-	private OutputStreamWriter osw;
-	private BufferedWriter bw;
+	private String msg;
 	
-	private String mess;
+	private InputStreamReader inputReader; // vers System.in
+	private BufferedReader br;
+	
+	private OutputStreamWriter outputWriter;	// vers Appli.in
+	private BufferedWriter bw;	
 	
 	
-	public Writer(final Process p) throws IOException {
-		
+	
+	
+	public Writer(final Process p) {
 		this.process = p;
-		//this.sc = new Scanner(System.in);
-		//this.osw = new OutputStreamWriter(process.getOutputStream());
-		//bw = new BufferedWriter(osw);
-		//new Thread().start();
-		
-		// A REFAIRE AVEC UN SCANNER DANS LE RUN ET SYNCRO AVEC LES DEUX
-		new Thread() {
-			public void run() {
-				try {
-					BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(p.getOutputStream()));
-					try {
-						//String str = sc.nextLine();
-						String s = null;
-						
-						System.out.println("Enter something here : ");
-
-					    try{
-					        BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-					        s = bufferRead.readLine();
-
-					        
-					    }
-					    catch(IOException e)
-					    {
-					        e.printStackTrace();
-					    }
-						
-						bw.write(s+"\n");
-						//bw.write("f = {{SinOsc.ar(440,0,0.8)}.play};\n");
-						//bw.write("s.waitForBoot(f);\n");
-					} finally {
-						//bw.close();
-						bw.flush();
-					}
-				} catch(IOException ioe) {
-					ioe.printStackTrace();
-				}
-			}
-		}.start();
-		
-		
+		this.outputWriter = new OutputStreamWriter(process.getOutputStream());
+		this.bw = new BufferedWriter(outputWriter);
+		this.inputReader = new InputStreamReader(System.in);
+		this.br = new BufferedReader(inputReader);
 	}
 	
+	@Override
 	public void run() {
-		//while(true)
-		{
-			trytoWrite();
+		connect();
+		while(true) {
+			msg();
+			if(this.msg.equals("disconnect"))
+				try {
+					disconnect();
+					break;
+				} catch (IOException e1) {
+					System.out.println("Failed to disconnect");
+					e1.printStackTrace();
+				}
+			try {
+				send();
+			} catch (IOException e) {
+				System.out.println("Failed to send");
+				e.printStackTrace();
+			}
 		}
+		System.out.println("Thread terminé ..");
 	}
 	
-	private void trytoWrite() {
+	private void connect()
+	{
+		System.out.println("You are connected...");
+	}
+	
+	private void msg() {
 		
-		System.out.println("Veuillez saisir un mot :");
-		String str = sc.nextLine();
-		System.out.println("Vous avez saisi : " + str);
-		this.setString(str);
+		System.out.println("Veuillez saisir une commande :");
 		try {
-			this.send();
+			this.setMsg(this.br.readLine());
 		} catch (IOException e) {
-			System.out.println("nul");
+			System.out.println("Commande non saisie");
 			e.printStackTrace();
 		}
-		
 	}
 
 	public void send() throws IOException {
-		bw.write(mess);				
+		bw.write(this.getMsg()+"\n");
+		bw.flush();
+		//bw.close();
+	} 			
+	
+	public void disconnect() throws IOException {
+		this.br.close();
+		this.bw.close();
+		this.inputReader.close();
+		this.outputWriter.close();
 	}
 	
-	public void setString(String _s)
+	
+	public void setMsg(String _s)
 	{
-		mess=_s;
+		msg=_s;
 	}
 	
-	public String getString()
+	public String getMsg()
 	{
-		return mess;
+		return msg;
 	}
-	
-	
-// BUT / FAIRE UN TRUC SEMBLABLE AUX BEES, CEST A DIRE UN WHILE 1 QUI FAIT UN TRY TO MOVE EN ESSAYANT DAPPELLER
-// OUVRIR ET FERMER LES PIPES A CHAQUE MESSAGE
-	
 }
