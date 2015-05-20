@@ -49,7 +49,7 @@ public class Writer implements Runnable{
 				e.printStackTrace();
 			}
 		}
-		System.out.println("Thread terminé ..");
+		System.out.println("Thread terminï¿½ ..");
 	}
 	
 	private void connect()
