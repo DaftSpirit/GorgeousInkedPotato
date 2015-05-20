@@ -12,6 +12,8 @@ import java.io.InputStreamReader;
 public class Reader implements Runnable{
 	
 	private Process process;
+	private InputStreamReader inputReader;
+	private BufferedReader br;
 	
 	/**
 	 * Constructor that start the thread
@@ -27,7 +29,8 @@ public class Reader implements Runnable{
 	 */
 	public void run()
 	{
-		BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
+		this.inputReader = new InputStreamReader(process.getInputStream());
+		this.br = new BufferedReader(this.inputReader);
 		while(true){	
 			try {
 				Thread.sleep(350);
@@ -52,5 +55,21 @@ public class Reader implements Runnable{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public BufferedReader getBufferedReader()
+	{
+		return this.br;
+	}
+	
+	public InputStreamReader getInputStreamReader()
+	{
+		return this.inputReader;
+	}
+	
+	public void disconnect() throws IOException
+	{
+		this.br.close();
+		this.inputReader.close();
 	}
 }
