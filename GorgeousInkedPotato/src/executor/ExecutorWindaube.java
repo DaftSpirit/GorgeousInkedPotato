@@ -5,7 +5,7 @@ import java.io.IOException;
 public class ExecutorWindaube {
 	/**
 	 * 
-	 * @authors dfg
+	 * @author daniel
 	 * @param args name of the command and options we want to execute
 	 * @throws InterruptedException 
 	 */
@@ -36,7 +36,7 @@ public class ExecutorWindaube {
 			//bw.write("s.waitForBoot(f);\n");
 			
 		} catch (IOException e) {
-			System.out.println("Ca a foiré !!!");			
+			System.out.println("Ca a foirï¿½ !!!");			
 			e.printStackTrace();
 		}
 		
