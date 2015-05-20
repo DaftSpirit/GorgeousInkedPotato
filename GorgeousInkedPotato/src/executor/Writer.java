@@ -79,8 +79,6 @@ public class Writer implements Runnable{
 		this.bw.close();
 		this.inputReader.close();
 		this.outputWriter.close();
-		/* FERMETURE DU SERVEUR */
-		//this.process.destroy();
 		System.exit(0);
 	}
 	
