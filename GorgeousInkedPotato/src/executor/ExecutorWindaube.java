@@ -1,6 +1,7 @@
 package executor;
 
 import java.io.IOException;
+import network.*;
 
 public class ExecutorWindaube {
 	/**
@@ -22,23 +23,18 @@ public class ExecutorWindaube {
 			Reader r = new Reader (process);
 			new Thread(r).start();
 			
-			/*
-			InputStream is = process.getInputStream();
-			InputStreamReader isr = new InputStreamReader(is);
-			BufferedReader br = new BufferedReader(isr);
-			String line;
-			while ((line = br.readLine()) != null) {
-				System.out.println(line);
-			}
-			*/
-			
-			//bw.write("f = {{SinOsc.ar(440,0,0.8)}.play};\n");
-			//bw.write("s.waitForBoot(f);\n");
+			Server_Socket ss = new Server_Socket();
+			w.setMsg(ss.getS());
+			w.send();
 			
 		} catch (IOException e) {
-			System.out.println("Ca a foirï¿½ !!!");			
+			System.out.println("Ca a foiré !!!");			
 			e.printStackTrace();
 		}
+		
+
+		
+		
 		
 	}
 }
