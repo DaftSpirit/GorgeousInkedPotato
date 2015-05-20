@@ -19,7 +19,9 @@ public class Executor {
 			try {
 				process = runtime.exec(arg);
 				Reader reader = new Reader(process);
+				new Thread(reader).start();
 				Writer writer = new Writer(process);
+				new Thread(writer).start();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

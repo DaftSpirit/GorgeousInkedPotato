@@ -20,7 +20,6 @@ public class Reader implements Runnable{
 	public Reader(Process process)
 	{
 		this.process = process;
-		new Thread(this).start();
 	}
 	
 	/**
