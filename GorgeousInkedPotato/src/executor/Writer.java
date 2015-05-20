@@ -49,7 +49,8 @@ public class Writer implements Runnable{
 				e.printStackTrace();
 			}
 		}
-		System.out.println("Thread terminï¿½ ..");
+		System.exit(0);
+		System.out.println("Thread terminé ..");
 	}
 	
 	private void connect()
@@ -79,7 +80,6 @@ public class Writer implements Runnable{
 		this.bw.close();
 		this.inputReader.close();
 		this.outputWriter.close();
-		System.exit(0);
 	}
 	
 	
