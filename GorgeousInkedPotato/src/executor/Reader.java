@@ -3,12 +3,11 @@ package executor;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.InputStream;
 
 
 /**
- * Thread for InputStream to read standard output of sclang
- * @author joris
+ * Thread for InputStream to read standard output of SClang
+ * @author Joris
  */
 public class Reader implements Runnable{
 	
@@ -29,20 +28,22 @@ public class Reader implements Runnable{
 	 */
 	public void run()
 	{
-		InputStream is = process.getInputStream();
-		InputStreamReader isr = new InputStreamReader(is);
-		BufferedReader br = new BufferedReader(isr);
+		BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
 		while(true){	
 			try {
 				Thread.sleep(350);
-				tryToRead(isr, br);
+				tryToRead(br);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
 	}
 	
-	public void tryToRead(InputStreamReader isr, BufferedReader br)
+	/**
+	 * Tries to read the inputStream and print it if it's not empty
+	 * @param br BuferedReader to read from
+	 */
+	public void tryToRead(BufferedReader br)
 	{		
 		try {
 			String line;
