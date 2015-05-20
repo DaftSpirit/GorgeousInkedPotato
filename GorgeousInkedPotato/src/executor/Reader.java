@@ -38,13 +38,11 @@ public class Reader implements Runnable{
 				tryToRead(isr, br);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
 			}
 		}
 	}
 	
-	public void tryToRead(InputStreamReader isr, BufferedReader br) throws IOException
+	public void tryToRead(InputStreamReader isr, BufferedReader br)
 	{		
 		try {
 			String line;
@@ -53,8 +51,6 @@ public class Reader implements Runnable{
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		}finally {
-			br.close();
 		}
 	}
 }

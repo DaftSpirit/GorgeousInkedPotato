@@ -19,7 +19,7 @@ public class Executor {
 			try {
 				process = runtime.exec(arg);
 				Reader reader = new Reader(process);
-				//Writer writer = new Writer(process);
+				Writer writer = new Writer(process);
 				Thread.sleep(500);
 				//writer.setString("yolo.postln;");
 				//writer.send();

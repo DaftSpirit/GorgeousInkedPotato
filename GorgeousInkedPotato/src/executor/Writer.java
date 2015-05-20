@@ -52,7 +52,8 @@ public class Writer implements Runnable{
 						//bw.write("f = {{SinOsc.ar(440,0,0.8)}.play};\n");
 						//bw.write("s.waitForBoot(f);\n");
 					} finally {
-						bw.close();
+						//bw.close();
+						bw.flush();
 					}
 				} catch(IOException ioe) {
 					ioe.printStackTrace();
