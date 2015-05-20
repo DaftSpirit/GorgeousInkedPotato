@@ -49,8 +49,8 @@ public class Writer implements Runnable{
 				e.printStackTrace();
 			}
 		}
-		System.exit(0);
 		System.out.println("Thread terminé ..");
+		System.exit(0);
 	}
 	
 	private void connect()
