@@ -26,7 +26,7 @@ public class Client_Socket {
 		     
 		     /** OUTPUT CLIENT SOCKET */
 		     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-		     bw.write("{SinOsc.ar(440,0,0.8)}.play");
+		     bw.write("s.boot;");
 		     // {SinOsc.ar(440,0,0.8)}.play
 		     bw.flush();
 		     
