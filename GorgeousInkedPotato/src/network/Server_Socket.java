@@ -9,12 +9,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 
-public class Server_Socket {
+public class Server_Socket{
 	
 	private static ServerSocket _SOCKET_;
-	private Socket server_socket1;
+	private static Socket server_socket1;
 	
-	private String s;
+
+	
+	private String s = null;
 
 	static {
 		try {
@@ -25,32 +27,8 @@ public class Server_Socket {
 	}
 	
 	
-	public Server_Socket(){
-		try{
-			server_socket1 = _SOCKET_.accept(); 
-			BufferedReader br = new BufferedReader(new InputStreamReader(server_socket1.getInputStream()));
-			try {
-				/** INPUT SERVER SOCKET */
-				String line;
-				while ((line = br.readLine()) != null) {
-					System.out.println(line);
-					s = line;
-				}
-				
-				/** OUTPUT SERVER SOCKET */
-				//BufferedWriter bw = null; 
-				/*bw = new BufferedWriter(new OutputStreamWriter(server_socket1.getOutputStream()));
-				bw.write(line);
-				bw.flush();
-				bw.close();*/
-				
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			//System.out.println("Un client s'est connecté !"); 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}	
+	public Server_Socket() throws IOException{
+		server_socket1 = _SOCKET_.accept();
 	}
 	
 	public void disconnect() {
@@ -69,5 +47,14 @@ public class Server_Socket {
 
 	public void setS(String s) {
 		this.s = s;
+	}
+	
+	public static Socket getSocket()
+	{
+		return server_socket1;
+	}
+	
+	public static ServerSocket getServersocket(){
+		return _SOCKET_;
 	}
 }
