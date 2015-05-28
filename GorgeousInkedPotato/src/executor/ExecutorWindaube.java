@@ -28,8 +28,8 @@ public class ExecutorWindaube {
 			
 			ServerSocketReader ssr = new ServerSocketReader();
 			new Thread(ssr).start();
-			//ServerSocketWriter ssw = new ServerSocketWriter();
-			//new Thread(ssw).start();
+			ServerSocketWriter ssw = new ServerSocketWriter();
+			new Thread(ssw).start();
 			
 			//w.setMsg(ss.getS());
 			//w.send();
