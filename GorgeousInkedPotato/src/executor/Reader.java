@@ -27,6 +27,8 @@ public class Reader implements Runnable{
 	{
 		this.process = process;
 		this.ss = ss;
+		this.inputReader = new InputStreamReader(process.getInputStream());
+		this.br = new BufferedReader(this.inputReader);
 	}
 	
 	/**
@@ -34,8 +36,6 @@ public class Reader implements Runnable{
 	 */
 	public void run()
 	{
-		this.inputReader = new InputStreamReader(process.getInputStream());
-		this.br = new BufferedReader(this.inputReader);
 		while(true){	
 			try {
 				Thread.sleep(350);
