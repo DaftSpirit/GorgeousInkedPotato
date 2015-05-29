@@ -29,7 +29,7 @@ public class ExecutorWindaube {
 		this.ss = _ss;
 		this.runtime = Runtime.getRuntime();
 		this.processSclang = runtime.exec(cmdSclang);
-		this.processData = runtime.exec(command);
+		//this.processData = runtime.exec(command);
 		launchReader();
 		launchWriter();
 	}
