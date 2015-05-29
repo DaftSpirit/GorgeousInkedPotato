@@ -17,16 +17,29 @@ public class Executor {
 		this.runtime = Runtime.getRuntime();
 	}
 
+	/**
+	 * instantiates a reader to get the output of SClang
+	 * @author joris
+	 */
 	public void launchReader() {
 		this.reader = new Reader(this.process, this.ss);
 		new Thread(reader).start();
 	}
 
+	/**
+	 * instantiates a writer to get the input of SClang
+	 * @author joris
+	 */
 	public void launchWriter() {
 		this.writer = new Writer(this.process);
 		new Thread(writer).start();
 	}
 	
+	/**
+	 * launches the shell in which SClang is executed
+	 * @throws IOException
+	 * @author joris
+	 */
 	public void launchSclang() throws IOException{
 		System.out.println("je lance le prog : sclang");
 		String[] arg = { "/bin/sh", "-c", "sclang" };

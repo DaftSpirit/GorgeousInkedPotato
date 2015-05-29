@@ -7,6 +7,8 @@ import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
 import java.util.Collection;
 
+import javax.swing.text.html.HTMLDocument.RunElement;
+
 import org.java_websocket.WebSocket;
 import org.java_websocket.WebSocketImpl;
 import org.java_websocket.framing.Framedata;
@@ -23,7 +25,11 @@ public class Server_Socket extends WebSocketServer {
 	public Server_Socket() throws UnknownHostException {
 		super();
 	}
-	
+	/**
+	 * constructs the server
+	 * @param port : port number to listen to
+	 * @throws UnknownHostException
+	 */
 	public Server_Socket(int port) throws UnknownHostException {
 		super(new InetSocketAddress( port ));
 	}
@@ -32,21 +38,23 @@ public class Server_Socket extends WebSocketServer {
 		super(address);
 	}
 
+	/**
+	 * Prints on the server out stream the address of the client who is connected
+	 */
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {
 		System.out.println( conn.getRemoteSocketAddress().getAddress().getHostAddress() + " is connected !" );
-		try {
-			runExe();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	@Override
 	public void onClose(WebSocket conn, int code, String reason, boolean remote) {
-		System.out.println( conn + " has closed connection !" );
+		System.out.println(conn + " has closed connection ! reason : " + reason);
 	}
 
+	/**
+	 * sends the message to the writer which can control SClang
+	 * @author joris
+	 */
 	@Override
 	public void onMessage(WebSocket conn, String message) {
 		System.out.println("message received from : " + conn);
@@ -65,6 +73,10 @@ public class Server_Socket extends WebSocketServer {
 		}
 	}
 	
+	/**
+	 * sends to all clients the text in parameter
+	 * @param text : string to send
+	 */
 	public void sendToAll(String text) {
 		Collection<WebSocket> connections = connections();
 		for(WebSocket w : connections){
@@ -72,6 +84,10 @@ public class Server_Socket extends WebSocketServer {
 		}
 	}
 	
+	/**
+	 * Launches SClang and both reader and writer to discuss with SClang
+	 * @throws IOException
+	 */
 	public void runExe() throws IOException{
 		this.exe = new Executor(this);
 		this.exe.launchSclang();
@@ -83,6 +99,7 @@ public class Server_Socket extends WebSocketServer {
 		try {
 			Server_Socket ss = new Server_Socket(port);
 			ss.start();
+			ss.runExe();
 			System.out.println("Server started on port : " + port);
 			
 			BufferedReader sysin = new BufferedReader( new InputStreamReader( System.in ) );
