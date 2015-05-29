@@ -9,6 +9,8 @@ public class Executor {
 	private Server_Socket ss;
 	private Runtime runtime;
 	private Process process;
+	private Reader reader;
+	private Writer writer;
 
 	public Executor(Server_Socket server_Socket) {
 		this.ss = server_Socket;
@@ -16,13 +18,13 @@ public class Executor {
 	}
 
 	public void launchReader() {
-		// TODO Auto-generated method stub
-		
+		this.reader = new Reader(this.process, this.ss);
+		new Thread(reader).start();
 	}
 
 	public void launchWriter() {
-		// TODO Auto-generated method stub
-		
+		this.writer = new Writer(this.process, this.ss);
+		new Thread(writer).start();
 	}
 	
 	public void launchSclang() throws IOException{
@@ -30,32 +32,8 @@ public class Executor {
 		String[] arg = { "/bin/sh", "-c", "sclang" };
 		
 		this.process = this.runtime.exec(arg);
+		
+		launchWriter();
+		launchReader();
 	}
-
-	
-	
-//	public static void main(String[] args) {
-//		Runtime runtime = Runtime.getRuntime();
-//		System.out.println("je lance le prog : sclang");
-//			
-//		String[] arg = { "/bin/sh", "-c", "sclang" };
-//			
-//		Process process;
-//		try {
-//			process = runtime.exec(arg);
-//			
-//			Reader reader = new Reader(process);
-//			new Thread(reader).start();
-//			
-//			Writer writer = new Writer(process);
-//			new Thread(writer).start();
-//			
-//			Server_Socket ss = new Server_Socket();
-//			//writer.setMsg(ss.getS());
-//			//writer.send();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
-
 }

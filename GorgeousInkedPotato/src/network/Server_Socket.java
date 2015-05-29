@@ -69,8 +69,27 @@ public class Server_Socket extends WebSocketServer {
 		int port = 8887;
 		try {
 			Server_Socket ss = new Server_Socket(port);
+			ss.start();
+			System.out.println("Server started on port : " + port);
 			
+			BufferedReader sysin = new BufferedReader( new InputStreamReader( System.in ) );
+			while ( true ) {
+				String in = sysin.readLine();
+				ss.sendToAll( in );
+				if( in.equals( "exit" ) ) {
+					ss.stop();
+					break;
+				} else if( in.equals( "restart" ) ) {
+					ss.stop();
+					ss.start();
+					break;
+				}
+			}	
 		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
