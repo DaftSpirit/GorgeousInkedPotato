@@ -35,6 +35,11 @@ public class Server_Socket extends WebSocketServer {
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {
 		System.out.println( conn.getRemoteSocketAddress().getAddress().getHostAddress() + " is connected !" );
+		try {
+			runExe();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
