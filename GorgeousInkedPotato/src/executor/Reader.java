@@ -27,7 +27,7 @@ public class Reader implements Runnable{
 	{
 		this.process = process;
 		this.ss = ss;
-		this.inputReader = new InputStreamReader(process.getInputStream());
+		this.inputReader = new InputStreamReader(this.process.getInputStream());
 		this.br = new BufferedReader(this.inputReader);
 	}
 	
@@ -56,7 +56,7 @@ public class Reader implements Runnable{
 			String line;
 			while ((line = br.readLine()) != null) {
 				System.out.println(line);
-				//cs.senttoall(line);
+				ss.sendToAll(line);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

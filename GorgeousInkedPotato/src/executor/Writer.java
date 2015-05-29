@@ -20,12 +20,10 @@ public class Writer implements Runnable{
 	private OutputStreamWriter outputWriter;	// vers Appli.in
 	private BufferedWriter bw;	
 	
-	private Server_Socket ss;
 	
 	
 	public Writer(final Process p, Server_Socket ss) {
 		this.process = p;
-		this.ss = ss;
 		this.outputWriter = new OutputStreamWriter(process.getOutputStream());
 		this.bw = new BufferedWriter(outputWriter);
 		this.inputReader = new InputStreamReader(System.in);
