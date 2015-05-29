@@ -10,7 +10,7 @@
 			<input onclick="sendMessage();" value="Send Message" type="button">
 		</form>
 		<br><textarea id="messagesTextArea" rows="10" cols="50"></textarea>
-		<br/><div id="returnServer"></div>
+		<br/><textarea id="returnServer" rows="10" cols="50"></textarea>
 		<script type="text/javascript">
 			var webSocket = new WebSocket("ws://localhost:8887");
 			var messagesTextArea = document.getElementById("messagesTextArea");
@@ -36,10 +36,10 @@
 			}
 			function processClose(message) {
 				webSocket.send("client disconnected!");
-				messagesTextArea.value += "Server Disconnect!"+"\n";
+				returnServer.value += "Server Disconnect!"+"\n";
 			}
 			function processError(message) {
-				messagesTextArea.value += "error ...\n";
+				returnServer.value += "error ...\n";
 			}
 		</script>
 	</body>
