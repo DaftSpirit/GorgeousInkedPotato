@@ -23,7 +23,7 @@ public class Executor {
 	}
 
 	public void launchWriter() {
-		this.writer = new Writer(this.process, this.ss);
+		this.writer = new Writer(this.process);
 		new Thread(writer).start();
 	}
 	
@@ -35,5 +35,9 @@ public class Executor {
 		
 		launchWriter();
 		launchReader();
+	}
+
+	public Writer getWriter() {
+		return this.writer;
 	}
 }
