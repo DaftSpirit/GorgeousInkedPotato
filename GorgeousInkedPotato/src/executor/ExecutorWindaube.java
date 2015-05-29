@@ -30,8 +30,10 @@ public class ExecutorWindaube {
 	private Process processData;
 	
 	private Runtime runtime;
+	private Server_Socket ss;
 	
-	public ExecutorWindaube() throws IOException{
+	public ExecutorWindaube(Server_Socket _ss) throws IOException{
+		this.ss = _ss;
 		this.runtime = Runtime.getRuntime();
 		this.processSclang = runtime.exec(cmdSclang);
 		this.processData = runtime.exec(command);
@@ -60,12 +62,12 @@ public class ExecutorWindaube {
 	}
 	
 	public void launchWriter(){
-		Writer w = new Writer (processSclang);
+		Writer w = new Writer (processSclang,ss);
 		new Thread(w).start();
 	}
 	
 	public void launchReader(){
-		Reader r = new Reader (processSclang);
+		Reader r = new Reader (processSclang,ss);
 		new Thread(r).start();
 	}
 	

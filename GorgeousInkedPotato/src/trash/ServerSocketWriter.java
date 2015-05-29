@@ -14,7 +14,7 @@ public class ServerSocketWriter implements Runnable{
 	private String msg;
 	
 	public ServerSocketWriter() throws IOException{
-		this.outputWriter = new OutputStreamWriter(Server_Socket.server_socket1.getOutputStream());
+		//this.outputWriter = new OutputStreamWriter(Server_Socket.server_socket1.getOutputStream());
 		this.bw = new BufferedWriter(outputWriter);
 	}
 	

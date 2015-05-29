@@ -3,6 +3,7 @@ package executor;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 import network.*;
 
 
@@ -16,15 +17,16 @@ public class Reader implements Runnable{
 	private InputStreamReader inputReader;
 	private BufferedReader br;
 	
-	private Server_Socket cs;
+	private Server_Socket ss;
 	
 	/**
 	 * Constructor that start the thread
 	 * @param process get the process of the runtime to get the inputStream
 	 */
-	public Reader(Process process)
+	public Reader(Process process,Server_Socket ss)
 	{
 		this.process = process;
+		this.ss = ss;
 	}
 	
 	/**

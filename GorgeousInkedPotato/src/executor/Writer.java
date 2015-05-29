@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+import network.Server_Socket;
+
 public class Writer implements Runnable{
 	
 	private Process process;
@@ -18,11 +20,12 @@ public class Writer implements Runnable{
 	private OutputStreamWriter outputWriter;	// vers Appli.in
 	private BufferedWriter bw;	
 	
+	private Server_Socket ss;
 	
 	
-	
-	public Writer(final Process p) {
+	public Writer(final Process p, Server_Socket ss) {
 		this.process = p;
+		this.ss = ss;
 		this.outputWriter = new OutputStreamWriter(process.getOutputStream());
 		this.bw = new BufferedWriter(outputWriter);
 		this.inputReader = new InputStreamReader(System.in);
@@ -59,6 +62,12 @@ public class Writer implements Runnable{
 			System.out.println("Commande non saisie");
 			e.printStackTrace();
 		}
+	}
+	
+	public void receiveCommand(String command) throws IOException
+	{
+		setMsg(command);
+		send();
 	}
 
 	public void send() throws IOException {
