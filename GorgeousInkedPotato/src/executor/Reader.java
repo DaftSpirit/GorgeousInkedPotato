@@ -18,6 +18,7 @@ public class Reader implements Runnable{
 	private BufferedReader br;
 	
 	private Server_Socket ss;
+	private Server_Socket_Windows ssw; // POUR WINDOWS
 	
 	/**
 	 * Constructor that start the thread
@@ -27,6 +28,14 @@ public class Reader implements Runnable{
 	{
 		this.process = process;
 		this.ss = ss;
+		this.inputReader = new InputStreamReader(this.process.getInputStream());
+		this.br = new BufferedReader(this.inputReader);
+	}
+	
+	public Reader(Process process,Server_Socket_Windows ssw) // CONSTRUCTEUR WINDOWS
+	{
+		this.process = process;
+		this.ssw = ssw;
 		this.inputReader = new InputStreamReader(this.process.getInputStream());
 		this.br = new BufferedReader(this.inputReader);
 	}

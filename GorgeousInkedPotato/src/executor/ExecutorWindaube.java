@@ -21,13 +21,17 @@ public class ExecutorWindaube {
 	private Process processData;
 	
 	private Runtime runtime;
-	private Server_Socket ss;
+	private Server_Socket_Windows ss;
+	private Writer w;
+	private Reader r;
 	
-	public ExecutorWindaube(Server_Socket _ss) throws IOException{
+	public ExecutorWindaube(Server_Socket_Windows _ss) throws IOException{
 		this.ss = _ss;
 		this.runtime = Runtime.getRuntime();
 		this.processSclang = runtime.exec(cmdSclang);
 		this.processData = runtime.exec(command);
+		launchReader();
+		launchWriter();
 	}
 	
 	public void launchAPI() {
@@ -53,13 +57,17 @@ public class ExecutorWindaube {
 	}
 	
 	public void launchWriter(){
-		Writer w = new Writer (processSclang);
+		this.w = new Writer (processSclang);
 		new Thread(w).start();
 	}
 	
 	public void launchReader(){
-		Reader r = new Reader (processSclang,ss);
+		this.r = new Reader (processSclang,ss);
 		new Thread(r).start();
+	}
+	
+	public Writer getWriter() {
+		return this.w;
 	}
 	
 	public void truc(String[] args) throws InterruptedException {
