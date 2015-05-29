@@ -22,7 +22,7 @@ public class Writer implements Runnable{
 	
 	
 	
-	public Writer(final Process p, Server_Socket ss) {
+	public Writer(final Process p) {
 		this.process = p;
 		this.outputWriter = new OutputStreamWriter(process.getOutputStream());
 		this.bw = new BufferedWriter(outputWriter);
