@@ -21,7 +21,23 @@ public class ExecutorWindaube {
 	 * @param args name of the command and options we want to execute
 	 * @throws InterruptedException 
 	 */
-	public static void main(String[] args) throws InterruptedException {
+	
+	
+	private String[] cmdSclang = { "cmd.exe", "/C", "D: & cd Applications\\SuperCollider-3.6.6 & sclang.exe" };
+	private Process processSclang;
+	
+	private String command = "cmd /c start cmd.exe";
+	private Process processData;
+	
+	private Runtime runtime;
+	
+	public ExecutorWindaube() throws IOException{
+		this.runtime = Runtime.getRuntime();
+		this.processSclang = runtime.exec(cmdSclang);
+		this.processData = runtime.exec(command);
+	}
+	
+	public void launchAPI() {
 		
 //		/** FRAME */
 //		JFrame frame = new JFrame();
@@ -41,43 +57,45 @@ public class ExecutorWindaube {
 //	         
 //	    
 //		frame.setVisible(true);		
+	}
+	
+	public void launchWriter(){
+		Writer w = new Writer (processSclang);
+		new Thread(w).start();
+	}
+	
+	public void launchReader(){
+		Reader r = new Reader (processSclang);
+		new Thread(r).start();
+	}
+	
+	public void truc(String[] args) throws InterruptedException {
 		
 		
-		
-		
-		Runtime runtime = Runtime.getRuntime();
-		try {
-			String[] cmd = { "cmd.exe", "/C", "D: & cd Applications\\SuperCollider-3.6.6 & sclang.exe" };
-			Process processSclang = runtime.exec(cmd);
-			
-			String command = "cmd /c start cmd.exe";
-			Process processData = runtime.exec(command);
-			
-			Writer w = new Writer (processSclang);
-			new Thread(w).start();
-			
-			Reader r = new Reader (processSclang);
-			new Thread(r).start();
-			
-			
-			Server_Socket ss = new Server_Socket();
-			
-			ServerSocketReader ssr = new ServerSocketReader();
-			new Thread(ssr).start();
-			ServerSocketWriter ssw = new ServerSocketWriter();
-			new Thread(ssw).start();
-			
-			//w.setMsg(ss.getS());
-			//w.send();
-			
-		} catch (IOException e) {
-			System.out.println("Ca a foiré !!!");			
-			e.printStackTrace();
-		}
+//		try {
+//			String[] cmd = { "cmd.exe", "/C", "D: & cd Applications\\SuperCollider-3.6.6 & sclang.exe" };
+//			Process processSclang = runtime.exec(cmd);
+//			
+//			String command = "cmd /c start cmd.exe";
+//			Process processData = runtime.exec(command);
+//			
+//			Writer w = new Writer (processSclang);
+//			new Thread(w).start();
+//			
+//			Reader r = new Reader (processSclang);
+//			new Thread(r).start();
+//			
+//			
+//			
+//
+//			
+//		} catch (IOException e) {
+//			System.out.println("Ca a foiré !!!");			
+//			e.printStackTrace();
+//		}
 		
 
-		
-		
-		
 	}
+	
+	
 }

@@ -3,6 +3,7 @@ package executor;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import network.*;
 
 
 /**
@@ -14,6 +15,8 @@ public class Reader implements Runnable{
 	private Process process;
 	private InputStreamReader inputReader;
 	private BufferedReader br;
+	
+	private Server_Socket cs;
 	
 	/**
 	 * Constructor that start the thread
@@ -51,6 +54,7 @@ public class Reader implements Runnable{
 			String line;
 			while ((line = br.readLine()) != null) {
 				System.out.println(line);
+				//cs.senttoall(line);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

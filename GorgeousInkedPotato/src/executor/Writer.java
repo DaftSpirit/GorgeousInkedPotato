@@ -31,7 +31,6 @@ public class Writer implements Runnable{
 	
 	@Override
 	public void run() {
-		connect();
 		while(true) {
 			msg();
 			if(this.msg.equals("disconnect"))
@@ -49,16 +48,11 @@ public class Writer implements Runnable{
 				e.printStackTrace();
 			}
 		}
-		System.out.println("Thread terminé ..");
+		System.out.println("Sclang terminated..");
 		System.exit(0);
 	}
 	
-	private void connect()
-	{
-		System.out.println("You are connected...");
-	}
-	
-	private void msg() {
+	private void msg() { // ENVOI DE COMMANDES DEPUIS LA CONSOLE SERVEUR UNIQUEMENT
 		try {
 			this.setMsg(this.br.readLine());
 		} catch (IOException e) {
@@ -68,9 +62,8 @@ public class Writer implements Runnable{
 	}
 
 	public void send() throws IOException {
-		bw.write(this.getMsg()+"\n");
+		bw.write(this.msg+"\n"); // Pas forcément besoin du \n ? 
 		bw.flush();
-		//bw.close();
 	} 			
 	
 	public void disconnect() throws IOException {
