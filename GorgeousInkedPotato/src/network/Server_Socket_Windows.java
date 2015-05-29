@@ -9,18 +9,15 @@ import java.util.Collection;
 
 import org.java_websocket.WebSocket;
 import org.java_websocket.WebSocketImpl;
-import org.java_websocket.framing.Framedata;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 
-import executor.Executor;
 import executor.ExecutorWindaube;
 
 
 public class Server_Socket_Windows extends WebSocketServer {
 	
 	private ExecutorWindaube exe;
-	private boolean isOpened;
 	
 	public Server_Socket_Windows() throws UnknownHostException {
 		super();
@@ -37,11 +34,6 @@ public class Server_Socket_Windows extends WebSocketServer {
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {
 		System.out.println( conn.getRemoteSocketAddress().getAddress().getHostAddress() + " is connected !" );
-		try {
-			runExe();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	@Override
@@ -75,11 +67,7 @@ public class Server_Socket_Windows extends WebSocketServer {
 	}
 	
 	public void runExe() throws IOException{
-		if(!isOpened)
-		{
-			this.exe = new ExecutorWindaube(this);
-		}
-		
+		this.exe = new ExecutorWindaube(this);
 		//this.exe.launchSclang();
 	}
 	
@@ -90,6 +78,7 @@ public class Server_Socket_Windows extends WebSocketServer {
 		try {
 			Server_Socket_Windows ss = new Server_Socket_Windows(port);
 			ss.start();
+			ss.runExe();
 			System.out.println("Server started on port : " + port);
 			
 			BufferedReader sysin = new BufferedReader( new InputStreamReader( System.in ) );
