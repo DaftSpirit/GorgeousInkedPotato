@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-import network.Server_Socket;
-
 public class Writer implements Runnable{
 	
 	private Process process;
