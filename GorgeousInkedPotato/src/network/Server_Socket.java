@@ -11,8 +11,8 @@ import java.net.Socket;
 
 public class Server_Socket{
 	
-	private static ServerSocket _SOCKET_;
-	private static Socket server_socket1;
+	static ServerSocket _SOCKET_;
+	static Socket server_socket1;
 	
 
 	
@@ -49,12 +49,4 @@ public class Server_Socket{
 		this.s = s;
 	}
 	
-	public static Socket getSocket()
-	{
-		return server_socket1;
-	}
-	
-	public static ServerSocket getServersocket(){
-		return _SOCKET_;
-	}
 }

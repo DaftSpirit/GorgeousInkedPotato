@@ -59,8 +59,6 @@ public class Writer implements Runnable{
 	}
 	
 	private void msg() {
-		
-		System.out.println("Veuillez saisir une commande :");
 		try {
 			this.setMsg(this.br.readLine());
 		} catch (IOException e) {

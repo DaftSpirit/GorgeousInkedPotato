@@ -11,7 +11,7 @@ public class ServerSocketReader implements Runnable{
 
 	public ServerSocketReader() throws IOException
 	{
-		this.inputReader = new InputStreamReader(Server_Socket.getSocket().getInputStream());
+		this.inputReader = new InputStreamReader(Server_Socket.server_socket1.getInputStream());
 		this.br = new BufferedReader(inputReader); 
 	}	
 	
