@@ -1,8 +1,10 @@
-package network;
+package trash;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+import network.Server_Socket;
 
 public class ServerSocketReader implements Runnable{
 	

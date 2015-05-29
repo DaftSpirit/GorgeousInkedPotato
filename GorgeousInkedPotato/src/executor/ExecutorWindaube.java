@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import trash.ServerSocketReader;
+import trash.ServerSocketWriter;
 import network.*;
 
 public class ExecutorWindaube {

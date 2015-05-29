@@ -1,8 +1,10 @@
-package network;
+package trash;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+
+import network.Server_Socket;
 
 public class ServerSocketWriter implements Runnable{
 	

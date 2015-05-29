@@ -12,7 +12,7 @@ import java.net.Socket;
 public class Server_Socket{
 	
 	static ServerSocket _SOCKET_;
-	static Socket server_socket1;
+	public static Socket server_socket1;
 	
 
 	
