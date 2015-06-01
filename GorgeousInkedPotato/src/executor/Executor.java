@@ -31,7 +31,7 @@ public class Executor {
 	 * @author joris
 	 */
 	public void launchWriter() {
-		this.writer = new Writer(this.process);
+		this.writer = new Writer(this.process, this.ss);
 		new Thread(writer).start();
 	}
 	

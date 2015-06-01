@@ -45,7 +45,16 @@ public class Server_Socket_Windows extends WebSocketServer {
 	public void onMessage(WebSocket conn, String message) {
 		System.out.println("message received from : " + conn);
 		try {
-			this.exe.getWriter().receiveCommand(message);
+			if(message.startsWith("cmd"))
+				this.exe.getWriter().receiveCommand(message.replaceAll("(cmd)(.*)","$2"));
+			else if(message.startsWith("chat"))
+			{
+				this.exe.getWriter().receiveChat(message);
+				//message.replaceAll("(chat)(.*)","$2")
+			}
+			else{
+				System.out.println("Non understood er general");
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

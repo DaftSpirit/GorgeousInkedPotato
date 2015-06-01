@@ -3,9 +3,14 @@ package executor;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+
+import network.Server_Socket;
+import network.Server_Socket_Windows;
 
 public class Writer implements Runnable{
 	
@@ -18,14 +23,25 @@ public class Writer implements Runnable{
 	private OutputStreamWriter outputWriter;	// vers Appli.in
 	private BufferedWriter bw;	
 	
+	private Server_Socket ss;
+	private Server_Socket_Windows ssw; // POUR WINDOWS
 	
-	
-	public Writer(final Process p) {
+	public Writer(final Process p, Server_Socket_Windows ssw) {
 		this.process = p;
 		this.outputWriter = new OutputStreamWriter(process.getOutputStream());
 		this.bw = new BufferedWriter(outputWriter);
 		this.inputReader = new InputStreamReader(System.in);
 		this.br = new BufferedReader(inputReader);
+		this.ssw = ssw;
+	}
+	
+	public Writer(final Process p, Server_Socket ss) {
+		this.process = p;
+		this.outputWriter = new OutputStreamWriter(process.getOutputStream());
+		this.bw = new BufferedWriter(outputWriter);
+		this.inputReader = new InputStreamReader(System.in);
+		this.br = new BufferedReader(inputReader);
+		this.ss = ss;
 	}
 	
 	@Override
@@ -65,6 +81,10 @@ public class Writer implements Runnable{
 		setMsg(command);
 		send();
 	}
+	
+	public void receiveChat(String msg) {
+		ssw.sendToAll(msg);
+	}
 
 	public void send() throws IOException {
 		bw.write(this.msg+"\n"); // Pas forcément besoin du \n ? 
@@ -88,4 +108,6 @@ public class Writer implements Runnable{
 	{
 		return msg;
 	}
+
+
 }

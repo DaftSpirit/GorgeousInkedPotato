@@ -57,7 +57,7 @@ public class ExecutorWindaube {
 	}
 	
 	public void launchWriter(){
-		this.w = new Writer (processSclang);
+		this.w = new Writer (processSclang,ss);
 		new Thread(w).start();
 	}
 	
