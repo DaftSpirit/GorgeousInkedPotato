@@ -1,0 +1,65 @@
+html { 
+	height: 100%; 
+}
+
+body { 
+	margin: 0; 
+	height: 100%; 
+	position: relative; 
+}
+
+#userlist {
+	position: absolute; 
+	left: 0; 
+	top: 0; 
+	bottom: 0; 
+	height: 50%;
+	width: 20%;
+}
+
+#firepad-container {
+	position: absolute; 
+	left: 20%; 
+	top: 0; 
+	bottom: 0; 
+	right: 20%; 
+	height: auto;
+	width: 60%
+}
+
+#returnServer {
+	position: absolute; 
+	left: 80%; 
+	top: 0; 
+	bottom: 0; 
+	right: 0; 
+	height: 100%;
+	width: 20%;
+}
+			
+#chat {
+	position: absolute; 
+	left: 0; 
+	top: 50%; 
+	bottom: 0; 
+	height: 40%;
+	width: 20%;
+}
+			
+#chatMessage {
+	position: absolute; 
+	left: 0; 
+	top: 92%; 
+	bottom: 0; 
+	height: 3%;
+	width: 11%;
+}
+			
+#sendMessage {
+	position: absolute; 
+	left: 12%; 
+	top: 92%; 
+	bottom: 0; 
+	height: 4%;
+	width: 8%;
+}

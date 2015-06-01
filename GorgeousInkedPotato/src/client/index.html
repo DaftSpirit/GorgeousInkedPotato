@@ -1,46 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
+<!-- See http://www.firepad.io/docs/ for detailed embedding docs. -->
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<title>Music Room</title>
+		<meta charset="utf-8" />
+		<!-- Firebase -->
+		<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+
+		<!-- CodeMirror and its JavaScript & LiveScript mode file -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/javascript/javascript.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/livescript/livescript.js"></script>
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.2.0/codemirror.css" />
+
+		<!-- Firepad -->
+		<link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.1.0/firepad.css" />
+		<script src="https://cdn.firebase.com/libs/firepad/1.1.0/firepad.min.js"></script>
+		
+		<!-- Jquery -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		
+
+
+		<!-- Include example userlist script / CSS.Can be downloaded from: https://github.com/firebase/firepad/tree/master/examples/ -->
+		<script src="js/firepad-userlist.js"></script>
+		<link rel="stylesheet" href="style/firepad-userlist.css" />
+		
+
+		<link rel="stylesheet" href="style/style.css">
+		
+	<title> Gorgeous Inked Potato </title>
 	</head>
 	<body>
-		<form>
-			<input id="textMessage" type="text">
-			<input onclick="sendMessage();" value="Send Message" type="button">
-		</form>
-		<br><textarea id="messagesTextArea" rows="10" cols="50"></textarea>
-		<br/><textarea id="returnServer" rows="10" cols="50"></textarea>
-		<script type="text/javascript">
-			var webSocket = new WebSocket("ws://localhost:8887");
-			var messagesTextArea = document.getElementById("messagesTextArea");
-
-			webSocket.onopen = function(message) { processOpen(message);};
-			webSocket.onmessage = function(message) { processMessage(message);};
-			webSocket.onclose = function(message) { processClose(message);};
-			webSocket.onerror = function(message) { processError(message);};
-			
-			function processOpen(message){
-				returnServer.value += "Server Connect!"+"\n";
-			}
-			function processMessage(message) {
-				returnServer.value += message.data + "\n";
-			}
-			function sendMessage(){
-				if(textMessage.value!="close"){
-					webSocket.send(textMessage.value);
-					messagesTextArea.value += "Send to Server ==> " +textMessage.value+"\n";
-					textMessage.value="";
-				} else webSocket.close();
-				
-			}
-			function processClose(message) {
-				webSocket.send("client disconnected!");
-				returnServer.value += "Server Disconnect!"+"\n";
-			}
-			function processError(message) {
-				returnServer.value += "error ...\n";
-			}
-		</script>
+		<div id="userlist"></div>
+		<div id="firepad-container"></div>
+		<textarea id="returnServer" rows="20" colums="5" readonly></textarea>
+		<textarea id="chat" rows="20" colums="4" readonly>Chat with your collaborators !</textarea>
+		<input type="text" id="chatMessage"/>
+		<input type="button" id="sendMessage" value="send message"/>
+		
+		<!-- WebSockets -->
+		<script src="js/socket.js"></script>
+		
+		<!-- Initialisation of Firepad -->
+		<script src="js/firepad.js"></script>
+		
+		<!-- Behaviour for sendind messages -->
+		<script src="js/jquery.js"></script>		
 	</body>
 </html>
+
