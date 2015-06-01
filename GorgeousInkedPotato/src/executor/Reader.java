@@ -65,7 +65,14 @@ public class Reader implements Runnable{
 			String line;
 			while ((line = br.readLine()) != null) {
 				System.out.println(line);
-				ss.sendToAll(line);
+				if(ss==null) // FOR LINUX OR WINDOWS USERS
+				{
+					ssw.sendToAll(line);
+				} 
+				else
+				{
+					ss.sendToAll(line);
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
