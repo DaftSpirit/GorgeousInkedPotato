@@ -23,7 +23,7 @@ You may change 2 datas in js/firebase.js and in js/socket.js<br/>
 In js/firebase.js you may replace the firebase address by yours<br/>
 In js/socket.js you may replace the websocket address by yours.<br/>
 
-Then just launch index.html in your favorite web browser (works only in the last versions of Chrome, IE, Firefox and Safari)
+Then just launch index.html in your favorite web browser (works only in the latest versions of Chrome, IE, Firefox and Safari)
 
 Have fun using GorgeousInkedPotato ! =)
 
