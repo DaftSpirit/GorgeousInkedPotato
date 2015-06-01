@@ -5,13 +5,19 @@
 
 # How to use GIP :
 
-1 - Server side application :
+<b>1 - Server side application :</b>
 
 Just compile the java sources and launch your server side app.
 You can chose the port of listenning by adding a parameter when you launch your server.
 It works both on Windows AND Linux !
 
-2 - Client side webApp :
+Linux users :
+<t/>Launch Server_Socket.java
+
+Windows users :
+<t/>Launch Server_Socket_Windows.java
+
+<b>2 - Client side webApp :</b>
 
 You may change 2 datas in js/firebase.js and in js/socket.js.
 In js/firebase.js you may replace the firebase address by yours
