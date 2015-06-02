@@ -57,7 +57,7 @@ public class Server_Socket extends WebSocketServer {
 		System.out.println("message received from : " + conn);
 		try {
 			if(message.startsWith("cmd"))
-				this.exe.getWriter().receiveCommand(message.replaceAll("(cmd)(.*)","$2"));		
+				this.exe.getWriter().receiveCommand(message.replaceFirst("cmd",""));	
 			else if(message.startsWith("chat"))
 			{
 				this.exe.getWriter().receiveChat(message);

@@ -1,4 +1,4 @@
-
+ 
 var webSocket = new WebSocket("ws://localhost:8887");
 var returnServer = document.getElementById("returnServer");
 var chatMessage = document.getElementById("chatMessage");
@@ -10,12 +10,13 @@ webSocket.onerror = function(message) { processError(message);};
 
 function processOpen(message){
 	returnServer.value += "Server Connect!"+"\n";
+	webSocket.send("chat"+ firepadUserList.displayName_ + " has connected !");
 }
 
 function processMessage(message) {
 	if (message.data.startsWith("chat"))
 	{
-		chat.value += firepadUserList.displayName + ": " + message.data.replace("chat","") + "\n";
+		chat.value += message.data.replace("chat","") + "\n";
 	}
 	else
 	{
@@ -24,7 +25,7 @@ function processMessage(message) {
 }
 
 function sendMessage(){
-	webSocket.send("chat"+chatMessage.value);
+	webSocket.send("chat"+ firepadUserList.displayName_ + ": " + chatMessage.value);
 	chatMessage.value="";
 }
 
@@ -33,7 +34,7 @@ function sendLine(string) {
 }
 
 function processClose(message) {
-	webSocket.send("client disconnected!");
+	webSocket.send("chat"+ firepadUserList.displayName_ + " has disconnected !"); // close avant le send ? meh o/
 	returnServer.value += "Server Disconnect!"+"\n";
 }
 

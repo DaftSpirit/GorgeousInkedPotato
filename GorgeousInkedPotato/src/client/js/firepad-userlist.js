@@ -235,6 +235,14 @@ var FirepadUserList = (function() {
     preventDefault(e);
     stopPropagation(e);
   }
+  
+  
+  // ADDED FUNCTIONS
+  
+  FirepadUserList.prototype.getName = function () {
+	  alert(this.displayName_);
+	  return this.displayName_;
+  }
 
   return FirepadUserList;
 })();
