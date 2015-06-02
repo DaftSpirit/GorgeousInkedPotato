@@ -62,7 +62,7 @@ codeMirror.colorize = function(collection, defaultMode) {
 
  for (var i = 0; i < collection.length; ++i) {
    var node = collection[i];
-   alert(i);
+   //alert(i);
    var mode = node.getAttribute("data-lang") || defaultMode;
    if (!mode) continue;
 
