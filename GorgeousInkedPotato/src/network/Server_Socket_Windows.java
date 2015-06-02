@@ -39,6 +39,7 @@ public class Server_Socket_Windows extends WebSocketServer {
 	@Override
 	public void onClose(WebSocket conn, int code, String reason, boolean remote) {
 		System.out.println( conn + " has closed connection !" );
+		this.sendToAll("chatSomeone left the room...");
 	}
 
 	@Override
