@@ -83,7 +83,14 @@ public class Writer implements Runnable{
 	}
 	
 	public void receiveChat(String msg) {
-		ssw.sendToAll(msg);
+		if(ss==null) // FOR LINUX OR WINDOWS USERS
+		{
+			ssw.sendToAll(msg);
+		} 
+		else
+		{
+			ss.sendToAll(msg);
+		}
 	}
 
 	public void send() throws IOException {
