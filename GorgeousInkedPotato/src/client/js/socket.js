@@ -15,7 +15,7 @@ function processOpen(message){
 function processMessage(message) {
 	if (message.data.startsWith("chat"))
 	{
-		chat.value += message.data + "\n";
+		chat.value += firepadUserList.displayName + ": " + message.data.replace("chat","") + "\n";
 	}
 	else
 	{
