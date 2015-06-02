@@ -9,6 +9,12 @@ $(document).ready(function(){
 		}
 	});
 	
-	
+	$("#firepad-container").keydown(function(event){
+		if(event.keyCode == 13 && event.ctrlKey) {
+			var y = codeMirror.getSelection(" ");
+			sendLine("cmd" + y);
+			event.preventDefault();
+		}
+	});
 	
 });
