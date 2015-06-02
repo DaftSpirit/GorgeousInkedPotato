@@ -35,9 +35,9 @@
 		<div id="userlist"></div>
 		<div id="firepad-container"></div>
 		<textarea id="returnServer" rows="20" colums="5" readonly></textarea>
-		<textarea id="chat" rows="20" colums="4" readonly>Chat with your collaborators !</textarea>
+		<textarea id="chat" rows="20" colums="4" readonly></textarea>
 		<input type="text" id="chatMessage"/>
-		<input type="button" id="sendMessage" value="send message"/>
+		<input type="button" id="sendMessage" value="send message" onclick="sendMessage();"/>
 		
 		<!-- WebSockets -->
 		<script src="js/socket.js"></script>
@@ -46,7 +46,11 @@
 		<script src="js/firepad.js"></script>
 		
 		<!-- Behaviour for sendind messages -->
-		<script src="js/jquery.js"></script>		
+		<script src="js/jquery.js"></script>
+
+		<!-- Behaviour for sendind messages -->
+		<script src="js/chat.js"></script>
+		
 	</body>
 </html>
 

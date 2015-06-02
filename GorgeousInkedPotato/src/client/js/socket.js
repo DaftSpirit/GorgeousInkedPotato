@@ -1,7 +1,7 @@
 
-var webSocket = new WebSocket("ws://localhost:8887"); //Change to your own server address
+var webSocket = new WebSocket("ws://localhost:8887");
 var returnServer = document.getElementById("returnServer");
-var textMessage = document.getElementById("textMessage");
+var chatMessage = document.getElementById("chatMessage");
 
 webSocket.onopen = function(message) { processOpen(message);};
 webSocket.onmessage = function(message) { processMessage(message);};
@@ -13,17 +13,20 @@ function processOpen(message){
 }
 
 function processMessage(message) {
-	returnServer.value += message.data + "\n";
+	if (message.data.startsWith("chat"))
+	{
+		chat.value += message.data + "\n";
+	}
+	else
+	{
+		returnServer.value += message.data + "\n";
+	}
 }
 
-/*function sendMessage(){
-	if(textMessage.value!="close"){
-		webSocket.send(textMessage.value);
-		returnServer.value += "Send to Server ==> " +textMessage.value+"\n";
-		textMessage.value="";
-	} else webSocket.close();
-	
-}*/
+function sendMessage(){
+	webSocket.send("chat"+chatMessage.value);
+	chatMessage.value="";
+}
 
 function sendLine(string) {
 	webSocket.send(string);
