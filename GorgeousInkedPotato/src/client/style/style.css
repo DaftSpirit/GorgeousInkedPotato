@@ -8,6 +8,20 @@ body {
 	position: relative; 
 }
 
+nav{
+	position: absolute;
+	left: 60%;
+	top: 0; 
+	bottom: 0; 
+	right: 0;
+	width: 20%;
+	height: 50%;
+}
+
+nav ul{
+	list-style-type: none;
+}
+
 #userlist {
 	position: absolute; 
 	left: 0; 
@@ -22,9 +36,9 @@ body {
 	left: 20%; 
 	top: 0; 
 	bottom: 0; 
-	right: 20%; 
+	right: 40%; 
 	height: auto;
-	width: 60%
+	width: 40%
 }
 
 #returnServer {
@@ -62,4 +76,14 @@ body {
 	bottom: 0; 
 	height: 4%;
 	width: 8%;
+}
+
+#samples{
+	position: absolute;
+	left: 60%;
+	right: 0;
+	top: 50%;
+	bottom: 0;
+	width: 20%;
+	height: 50%;
 }

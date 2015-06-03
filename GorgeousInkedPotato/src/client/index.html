@@ -26,20 +26,56 @@
 		<script src="js/firepad-userlist.js"></script>
 		<link rel="stylesheet" href="style/firepad-userlist.css" />
 		
+		<!-- Javascript file to display samples of code -->
+		<script src="js/samples.js"></script>
 
 		<link rel="stylesheet" href="style/style.css">
 		
 	<title> Gorgeous Inked Potato </title>
 	</head>
 	<body>
-	<p id="test" > VTFF </p>
 		<div id="userlist"></div>
 		<div id="firepad-container"></div>
 		<textarea id="returnServer" rows="20" colums="5" readonly></textarea>
 		<textarea id="chat" rows="20" colums="4" readonly></textarea>
 		<input type="text" id="chatMessage"/>
-		<input type="button" id="sendMessage" value="send message" onclick="sendMessage();"/>
-		
+		<input type="button" id="sendMessage" value="send message" onclick="sendMessage();"/>		
+		<nav> 
+			<ul>
+				<li>
+					Tree 1
+					<ul>
+						<li id="t1s1">
+							<input type="button" value="sample 1" onclick="displayT1S1();"/>
+						</li>
+						<li id="t1s2">
+							<input type="button" value="sample 2" onclick="displayT1S2();"/>
+						</li>
+					</ul>
+				</li>
+				<li>Tree 2
+					<ul>
+						<li id="t2s1">
+							<input type="button" value="sample 1" onclick="displayT2S1();"/>
+						</li>
+						<li id="t2s2">
+							<input type="button" value="sample 2" onclick="displayT2S2();"/>
+						</li>
+					</ul>
+				</li>
+				<li>Tree 3
+					<ul>
+						<li id="t3s1">
+							<input type="button" value="sample 1" onclick="displayT3S1();"/>
+						</li>
+						<li id="t3s2">
+							<input type="button" value="sample 2" onclick="displayT3S2();"/>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+		<iframe id="samples" name="samples"></iframe>
 		<!-- WebSockets -->
 		<script src="js/socket.js"></script>
 		
