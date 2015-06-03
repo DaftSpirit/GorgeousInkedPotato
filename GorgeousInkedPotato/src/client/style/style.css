@@ -16,10 +16,21 @@ nav{
 	right: 0;
 	width: 20%;
 	height: 50%;
+	background-color: rgba(255,0,0,0.05);
+	font-family: 'Helvetica Neue', sans-serif;
 }
 
 nav ul{
 	list-style-type: none;
+}
+
+nav input{
+	background-color: rgba(100,0,100,0.1);
+	border-radius: 5px;
+}
+
+.tree{
+	font-weight: bold;
 }
 
 #userlist {
