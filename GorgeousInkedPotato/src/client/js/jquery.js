@@ -19,7 +19,8 @@ $(document).ready(function(){
 			sendLine("cmd"+x);
 			
 			// Colorise the line
-		    var hightlight = $("pre").get(codeMirror.getCursor().line+1);
+		    var hightlight = $(".CodeMirror-code pre").get(codeMirror.getCursor().line);
+		    console.log($(hightlight).html()); //i.e.
 		    var origincolor = $("pre").css("background-color");
 		    $(hightlight).css("background-color", "orange");
 		    setTimeout(function(){
