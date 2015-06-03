@@ -43,7 +43,7 @@ function toggleDisplayT1() {
 	li2 = document.getElementById('t1s2');
 	input = document.getElementById('tree1');
 	if(t1Displayed == false) {
-		li1.innerHTML = '<input type="button" value="sample 1" class="file" onclick="displayT1S1();"/>';
+		li1.innerHTML = '<input type="button" value="snare drum" class="file" onclick="displayT1S1();"/>';
 		li2.innerHTML = '<input type="button" value="sample 2" class="file" onclick="displayT1S2();"/>';
 		input.value = 'v';
 		t1Displayed = true;
