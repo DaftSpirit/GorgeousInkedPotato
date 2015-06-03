@@ -24,9 +24,17 @@ nav ul{
 	list-style-type: none;
 }
 
-nav input{
-	background-color: rgba(100,0,100,0.1);
+.file{
+	background-color: rgba(200,0,0,0.1);
 	border-radius: 5px;
+}
+
+#tree1, #tree2, #tree3{
+	background-color: rgba(200,0,0,0.1);
+	border: 1px solid;
+	border-color: rgba(200,0,0,0.3);
+	width: 3px;
+	height: 1.5em;
 }
 
 .tree{
