@@ -1,0 +1,44 @@
+HOW TO USE GIP :
+
+I - The code editor :
+
+		You simply have to 
+	write in SuperCollider 
+	Language what you want to do.
+	
+1/ Send your code to SCLang :
+
+		SCLang interprets your code and 
+	instantiates synths on 
+	SCSynth to make noise.
+	
+	To send your code there is
+	2 possibilities :
+	
+	1/ You send only one line :
+	
+		place your cursor on the line
+		and press SHIFT + ENTER
+		
+	2/ You send a block :
+	
+		select your block
+		and press CTRL + ENTER
+		
+2/ Errors and feedBack :
+
+	SCLang have server feedBack.
+	On GIP the feedbacks are
+	on the right-side of the screen.
+	
+	Here you can see errors and
+	what SCLang is making
+	
+II - Chat :
+
+	On the left-side of the screen
+	there is a chat.
+	Here you can chat with your 
+	collaborators if you want to.
+	A user list is provided
+	on the top left-side.

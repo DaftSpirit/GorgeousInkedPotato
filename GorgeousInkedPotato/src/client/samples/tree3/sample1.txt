@@ -1,0 +1,22 @@
+// the arg direct will control the proportion of direct to processed signal
+SynthDef("tutorial-DecayPink", { arg outBus = 0, effectBus, direct = 0.5;    
+	var source;    
+	// Decaying pulses of PinkNoise. We'll add reverb later.    
+	source = Decay2.ar(Impulse.ar(1, 0.25), 0.01, 0.2, PinkNoise.ar);    
+	// this will be our main output    
+	Out.ar(outBus, source * direct);    
+	// this will be our effects output    
+	Out.ar(effectBus, source * (1 - direct));
+}).add;
+
+SynthDef("tutorial-DecaySin", { arg outBus = 0, effectBus, direct = 0.5;    
+	var source;    
+	// Decaying pulses of a modulating sine wave. We'll add reverb later.    
+	source = Decay2.ar(Impulse.ar(0.3, 0.25), 0.3, 1, SinOsc.ar(SinOsc.kr(0.2, 0, 110, 440)));    
+	// this will be our main output    
+	Out.ar(outBus, source * direct);    
+	// this will be our effects output    
+	Out.ar(effectBus, source * (1 - direct));
+}).add;
+
+

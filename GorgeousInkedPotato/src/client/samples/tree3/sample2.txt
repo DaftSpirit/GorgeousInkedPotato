@@ -1,0 +1,10 @@
+SynthDef("tutorial-Reverb", { arg outBus = 0, inBus;    
+	var input;    
+	input = In.ar(inBus, 1);
+    // a low-rent reverb    
+    // aNumber.do will evaluate its function argument a corresponding number of times    
+    // {}.dup(n) will evaluate the function n times, and return an Array of the results    
+    // The default for n is 2, so this makes a stereo reverb    
+    16.do({ input = AllpassC.ar(input, 0.04, { Rand(0.001,0.04) }.dup, 3)});
+    Out.ar(outBus, input);
+}).add;
