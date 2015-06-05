@@ -19,12 +19,12 @@ $(document).ready(function(){
 			sendLine("cmd"+x);
 			
 			// Colorise the line
-		    var hightlight = $(".CodeMirror-code pre").get(codeMirror.getCursor().line);
-		    console.log($(hightlight).html()); //i.e.
+		    var highlight = $(".CodeMirror-code pre").get(codeMirror.getCursor().line);
+		    //console.log($(highlight).html()); //i.e.
 		    var origincolor = $("pre").css("background-color");
-		    $(hightlight).css("background-color", "orange");
+		    $(highlight).css("background-color", "orange");
 		    setTimeout(function(){
-		    	$(hightlight).css("background-color", origincolor);
+		    	$(highlight).css("background-color", origincolor);
 		    }, 600);
 
 			event.preventDefault();
@@ -33,10 +33,38 @@ $(document).ready(function(){
 	
 	$("#firepad-container").keydown(function(event){
 		if(event.keyCode == 13 && event.ctrlKey) {
+			// Send the line
 			var y = codeMirror.getSelection(" ");
 			sendLine("cmd" + y);
+			
+			//Colorise the line
+			var y = codeMirror.getSelection("$");
+			//console.log(y);
+		    var highlight = $(".CodeMirror-code pre").get(codeMirror.getSelection(" "));
+		    //console.log($(highlight).html()); //i.e.
+		    var origincolor = $("pre").css("background-color");
+		    $(highlight).css("background-color", "orange");
+		    setTimeout(function(){
+		    	$(highlight).css("background-color", origincolor);
+		    }, 600);
+			
 			event.preventDefault();
 		}
+	});
+	
+	
+	
+	$("#firepad-container").click(function(event){
+		codeMirror.on("keydown",function(){
+			alert("trololo");
+		});
+		//alert("j'ai cliqué madafaka");
+		var start = $(".CodeMirror-code pre").get(codeMirror.getCursor().line);
+		//console.log(start);
+		$("#firepad-container").mouseup(function() {
+			  //alert( "Handler for .mouseup() called." );
+		});
+
 	});
 });
 
