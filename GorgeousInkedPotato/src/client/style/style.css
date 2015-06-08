@@ -26,6 +26,7 @@ nav{
 	background: linear-gradient(to right, #ebebeb 0%,#eaeaea 93%,#d9d9d9 100%); /* W3C */
 	color: #404040;
 	font-family: 'Helvetica Neue', sans-serif;
+	overflow: auto;
 }
 
 nav ul{
