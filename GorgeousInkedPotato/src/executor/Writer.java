@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.regex.Pattern;
 
 import network.Server_Socket;
 import network.Server_Socket_Windows;
@@ -78,7 +79,24 @@ public class Writer implements Runnable{
 	
 	public void receiveCommand(String command) throws IOException
 	{
-		setMsg(command);
+		
+		Pattern p = Pattern.compile("\\$");
+		String[] items = p.split(command);
+		String user = items[0];
+		String line = items[1];
+		String cmd = items[2];
+		if(ss==null) // FOR LINUX OR WINDOWS USERS
+		{
+			ssw.sendToAll("line" + line);
+			ssw.sendToAll("<p id=\"user_text\"> UTILISATEUR " + user + " A VALIDE LA LIGNE " + line + "</p>");
+		}
+		else
+		{
+			ss.sendToAll("line" + line);
+			ss.sendToAll("<p id=\"user_text\"> UTILISATEUR " + user + " A VALIDE LA LIGNE " + line + "</p>");
+		}
+		
+		setMsg(cmd);
 		send();
 	}
 	

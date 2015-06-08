@@ -63,6 +63,10 @@ public class Reader implements Runnable{
 	{		
 		try {
 			String line;
+			
+			//String test = "<textarea>";
+			//ssw.sendToAll(test);
+
 			while ((line = br.readLine()) != null) {
 				System.out.println(line);
 				if(ss==null) // FOR LINUX OR WINDOWS USERS

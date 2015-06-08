@@ -17,9 +17,6 @@ public class ExecutorWindaube {
 	private String[] cmdSclang = { "cmd.exe", "/C", "D: & cd Applications\\SuperCollider-3.6.6 & sclang.exe" };
 	private Process processSclang;
 	
-	private String command = "cmd /c start cmd.exe";
-	private Process processData;
-	
 	private Runtime runtime;
 	private Server_Socket_Windows ss;
 	private Writer w;
@@ -29,7 +26,6 @@ public class ExecutorWindaube {
 		this.ss = _ss;
 		this.runtime = Runtime.getRuntime();
 		this.processSclang = runtime.exec(cmdSclang);
-		//this.processData = runtime.exec(command);
 		launchReader();
 		launchWriter();
 	}

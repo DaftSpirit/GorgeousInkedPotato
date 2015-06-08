@@ -4,7 +4,8 @@ html {
 
 body { 
 	margin: 0; 
-	height: 100%; 
+	height: 100%;
+	weigth: 100%;  
 	position: relative; 
 }
 
@@ -82,6 +83,8 @@ nav ul{
 }
 
 #returnServer {
+	white-space:pre ;
+	overflow:auto;
 	position: absolute; 
 	left: 80%; 
 	top: 0; 
@@ -126,4 +129,9 @@ nav ul{
 	bottom: 0;
 	width: 19.7%;
 	height: 50%;
+}
+
+#user_text{
+	
+	color: red;
 }

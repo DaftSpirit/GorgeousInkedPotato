@@ -9,7 +9,7 @@ webSocket.onclose = function(message) { processClose(message);};
 webSocket.onerror = function(message) { processError(message);};
 
 function processOpen(message){
-	returnServer.value += "Server Connect!"+"\n";
+	returnServer.innerHTML += "Server Connect!"+"\n";
 	webSocket.send("chat"+ firepadUserList.displayName_ + " has connected !");
 }
 
@@ -18,9 +18,14 @@ function processMessage(message) {
 	{
 		chat.value += message.data.replace("chat","") + "\n";
 	}
+	else if (message.data.startsWith("line"))
+	{
+		line = message.data.replace("line","");
+		highlight(line-1);
+	}
 	else
 	{
-		returnServer.value += message.data + "\n";
+		returnServer.innerHTML += message.data + "\n";
 	}
 }
 
@@ -30,7 +35,7 @@ function sendMessage(){
 }
 
 function sendLine(string) {
-	webSocket.send(string);
+	webSocket.send("cmd"+ firepadUserList.displayName_ + string);
 }
 
 function processClose(message) {
@@ -42,4 +47,12 @@ function processError(message) {
 	returnServer.value += "error ...\n";
 }
 
+function highlight(line){
+	 var highlight = $(".CodeMirror-code pre").get(line);
+	 var origincolor = $("pre").css("background-color");
+	 $(highlight).css("background-color", "orange");
+	 setTimeout(function(){
+	 	$(highlight).css("background-color", origincolor);
+	 }, 600);
+}
 
