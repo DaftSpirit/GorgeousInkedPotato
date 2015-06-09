@@ -63,6 +63,10 @@ public class Server_Socket extends WebSocketServer {
 				this.exe.getWriter().receiveChat(message);
 				//message.replaceAll("(chat)(.*)","$2")
 			}
+			else if(message.startsWith("bloc"))
+			{
+				this.exe.getWriter().receiveBloc(message.replaceFirst("bloc",""));
+			}
 			else{
 				System.out.println("Non understood er general");
 			}
