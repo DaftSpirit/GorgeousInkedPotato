@@ -13,7 +13,7 @@ $(document).ready(function(){
 		if(event.keyCode == 13 && event.ctrlKey) {
 			// Send the line
 			var y = codeMirror.getSelection(" ");
-			sendLine("cmd" + y);
+			sendBloc("$"+(codeMirror.getCursor().line +1)+"$"+y);
 			event.preventDefault();
 		}
 	});

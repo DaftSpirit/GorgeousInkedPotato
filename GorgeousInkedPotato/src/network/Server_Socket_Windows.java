@@ -48,6 +48,10 @@ public class Server_Socket_Windows extends WebSocketServer {
 		try {
 			if(message.startsWith("cmd"))
 				this.exe.getWriter().receiveCommand(message.replaceFirst("cmd",""));
+			else if(message.startsWith("bloc"))
+			{
+				this.exe.getWriter().receiveBloc(message.replaceFirst("bloc",""));
+			}
 			else if(message.startsWith("chat"))
 			{
 				this.exe.getWriter().receiveChat(message);

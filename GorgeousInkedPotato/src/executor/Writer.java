@@ -88,12 +88,35 @@ public class Writer implements Runnable{
 		if(ss==null) // FOR LINUX OR WINDOWS USERS
 		{
 			ssw.sendToAll("line" + line);
-			ssw.sendToAll("<p id=\"user_text\"> UTILISATEUR " + user + " A VALIDE LA LIGNE " + line + "</p>");
+			ssw.sendToAll("<p id=\"user_text\">" + user + " à envoyé la ligne " + line + ".</p>");
 		}
 		else
 		{
 			ss.sendToAll("line" + line);
-			ss.sendToAll("<p id=\"user_text\"> UTILISATEUR " + user + " A VALIDE LA LIGNE " + line + "</p>");
+			ss.sendToAll("<p id=\"user_text\">" + user + " à envoyé la ligne " + line + ".</p>");
+		}
+		
+		setMsg(cmd);
+		send();
+	}
+	
+	public void receiveBloc(String command) throws IOException
+	{
+		
+		Pattern p = Pattern.compile("\\$");
+		String[] items = p.split(command);
+		String user = items[0];
+		String line = items[1];
+		String cmd = items[2];
+		if(ss==null) // FOR LINUX OR WINDOWS USERS
+		{
+			ssw.sendToAll("bloc" + line);
+			ssw.sendToAll("<p id=\"user_text\">" + user + " à envoyé le bloc ligne " + line + ".</p>");
+		}
+		else
+		{
+			ss.sendToAll("bloc" + line);
+			ss.sendToAll("<p id=\"user_text\">" + user + " à envoyé le bloc ligne " + line + ".</p>");
 		}
 		
 		setMsg(cmd);

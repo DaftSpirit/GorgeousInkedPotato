@@ -23,6 +23,11 @@ function processMessage(message) {
 		line = message.data.replace("line","");
 		highlight(line-1);
 	}
+	else if (message.data.startsWith("bloc"))
+	{
+		line = message.data.replace("bloc","");
+		highlight(line-1);
+	}
 	else
 	{
 		returnServer.innerHTML += message.data + "\n";
@@ -36,6 +41,10 @@ function sendMessage(){
 
 function sendLine(string) {
 	webSocket.send("cmd"+ firepadUserList.displayName_ + string);
+}
+
+function sendBloc(string) {
+	webSocket.send("bloc"+ firepadUserList.displayName_ + string);
 }
 
 function processClose(message) {
