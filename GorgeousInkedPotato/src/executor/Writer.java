@@ -88,12 +88,12 @@ public class Writer implements Runnable{
 		if(ss==null) // FOR LINUX OR WINDOWS USERS
 		{
 			ssw.sendToAll("line" + line);
-			ssw.sendToAll("<p id=\"user_text\">" + user + " à envoyé la ligne " + line + ".</p>");
+			ssw.sendToAll("<p id=\"user_text\">" + user + " ï¿½ envoyï¿½ la ligne " + line + ".</p>");
 		}
 		else
 		{
 			ss.sendToAll("line" + line);
-			ss.sendToAll("<p id=\"user_text\">" + user + " à envoyé la ligne " + line + ".</p>");
+			ss.sendToAll("<p id=\"user_text\">" + user + " ï¿½ envoyï¿½ la ligne " + line + ".</p>");
 		}
 		
 		setMsg(cmd);
@@ -108,17 +108,18 @@ public class Writer implements Runnable{
 		String user = items[0];
 		String line = items[1];
 		String cmd = items[2];
+		int nb = cmd.length() - cmd.replace("Â§", "").length();
 		if(ss==null) // FOR LINUX OR WINDOWS USERS
 		{
-			ssw.sendToAll("bloc" + line);
-			ssw.sendToAll("<p id=\"user_text\">" + user + " à envoyé le bloc ligne " + line + ".</p>");
+			ssw.sendToAll("bloc" + line + "$" + nb);
+			ssw.sendToAll("<p id=\"user_text\">" + user + " ï¿½ envoyï¿½ le bloc ligne " + line + ".</p>");
 		}
 		else
 		{
-			ss.sendToAll("bloc" + line);
-			ss.sendToAll("<p id=\"user_text\">" + user + " à envoyé le bloc ligne " + line + ".</p>");
+			ss.sendToAll("bloc" + line + "$" + nb);
+			ss.sendToAll("<p id=\"user_text\">" + user + " ï¿½ envoyï¿½ le bloc ligne " + line + ".</p>");
 		}
-		
+		cmd = cmd.replace("Â§", " ");
 		setMsg(cmd);
 		send();
 	}
@@ -135,7 +136,7 @@ public class Writer implements Runnable{
 	}
 
 	public void send() throws IOException {
-		bw.write(this.msg+"\n"); // Pas forcément besoin du \n ? 
+		bw.write(this.msg+"\n"); // Pas forcï¿½ment besoin du \n ? 
 		bw.flush();
 	} 			
 	

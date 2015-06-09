@@ -12,7 +12,7 @@ $(document).ready(function(){
 	$("#firepad-container").keydown(function(event){
 		if(event.keyCode == 13 && event.ctrlKey) {
 			// Send the line
-			var y = codeMirror.getSelection(" ");
+			var y = codeMirror.getSelection("§");
 			sendBloc("$"+(codeMirror.getCursor().line +1)+"$"+y);
 			event.preventDefault();
 		}

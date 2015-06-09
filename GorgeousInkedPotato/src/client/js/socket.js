@@ -25,8 +25,13 @@ function processMessage(message) {
 	}
 	else if (message.data.startsWith("bloc"))
 	{
-		line = message.data.replace("bloc","");
-		highlight(line-1);
+		var res = message.data.split("$");
+		line = res[0].replace("bloc","");
+		for (i = 0; i < parseInt(res[1])+1; i++) { 
+			highlight(parseInt(line)-1-i);
+			console.log(res[1]);
+		}
+		
 	}
 	else
 	{
