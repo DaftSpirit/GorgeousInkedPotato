@@ -3,9 +3,7 @@ package executor;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.regex.Pattern;
@@ -88,12 +86,12 @@ public class Writer implements Runnable{
 		if(ss==null) // FOR LINUX OR WINDOWS USERS
 		{
 			ssw.sendToAll("line" + line);
-			ssw.sendToAll("<p id=\"user_text\">" + user + " � envoy� la ligne " + line + ".</p>");
+			ssw.sendToAll(user + " valide la ligne " + line);
 		}
 		else
 		{
 			ss.sendToAll("line" + line);
-			ss.sendToAll("<p id=\"user_text\">" + user + " � envoy� la ligne " + line + ".</p>");
+			ss.sendToAll(user + " valide la ligne " + line);
 		}
 		
 		setMsg(cmd);
@@ -102,7 +100,6 @@ public class Writer implements Runnable{
 	
 	public void receiveBloc(String command) throws IOException
 	{
-		
 		Pattern p = Pattern.compile("\\$");
 		String[] items = p.split(command);
 		String user = items[0];
@@ -112,12 +109,12 @@ public class Writer implements Runnable{
 		if(ss==null) // FOR LINUX OR WINDOWS USERS
 		{
 			ssw.sendToAll("bloc" + line + "$" + nb);
-			ssw.sendToAll("<p id=\"user_text\">" + user + " � envoy� le bloc ligne " + line + ".</p>");
+			ssw.sendToAll(user + " valide le bloc " + line);
 		}
 		else
 		{
 			ss.sendToAll("bloc" + line + "$" + nb);
-			ss.sendToAll("<p id=\"user_text\">" + user + " � envoy� le bloc ligne " + line + ".</p>");
+			ss.sendToAll(user + " valide le bloc " + line);
 		}
 		cmd = cmd.replace("§", " ");
 		setMsg(cmd);

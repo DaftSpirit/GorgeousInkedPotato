@@ -17,6 +17,8 @@ function processMessage(message) {
 	if (message.data.startsWith("chat"))
 	{
 		chat.value += message.data.replace("chat","") + "\n";
+		element = document.getElementById('chat');
+		element.scrollTop = element.scrollHeight;
 	}
 	else if (message.data.startsWith("line"))
 	{
@@ -36,6 +38,8 @@ function processMessage(message) {
 	else
 	{
 		returnServer.innerHTML += message.data + "\n";
+		element = document.getElementById('returnServer');
+		element.scrollTop = element.scrollHeight;
 	}
 }
 

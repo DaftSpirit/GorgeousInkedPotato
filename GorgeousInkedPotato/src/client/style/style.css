@@ -84,8 +84,6 @@ nav ul{
 }
 
 #returnServer {
-	white-space:pre ;
-	overflow:auto;
 	position: absolute; 
 	left: 80%; 
 	top: 0; 
@@ -93,6 +91,7 @@ nav ul{
 	right: 0; 
 	height: 100%;
 	width: 20%;
+	color: grey;
 }
 			
 #chat {
