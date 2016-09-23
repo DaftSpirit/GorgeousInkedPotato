@@ -11,12 +11,12 @@ Just compile the java sources and launch your server side app.
 You can chose the port of listenning by adding a parameter when you launch your server.
 It works both on Windows AND Linux !
 
-<b>* Linux users : </b>
+<b> * Linux users : </b>
 - javac -classpath . *.java
 - jar cvfm launcher.jar META-INF/MANIFEST.MF *.class
 - java -cp ./launcher.jar network.Server_Socket
 
-<b>* Windows users : </b>
+<b> * Windows users : </b>
 - javac -classpath . *.java
 - jar cvfm launcher.jar META-INF/MANIFEST.MF *.class
 - java -cp ./launcher.jar network.Server_Socket_Windows
