@@ -59,3 +59,4 @@ You simply enter SCLang lines in your pad and send them by pressing shift+enter
 
 * [superCollider] (http://supercollider.github.io/)
 * [Java-Websockets] (https://github.com/TooTallNate/Java-WebSocket)
+* [Firepad] (https://firepad.io/)
