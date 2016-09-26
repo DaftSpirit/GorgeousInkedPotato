@@ -48,7 +48,14 @@ type sclang commands in the pad. To validate and send commands you have two ways
 
 Have fun using GorgeousInkedPotato ! =)
 
+[!gif] (http://jorisrat.me/wp-content/uploads/2015/11/potato.gif)
+
 # How is GIP made :
 
 GIP uses websockets to make the link between SCLang and the firepad collaborative code editor.
 You simply enter SCLang lines in your pad and send them by pressing shift+enter
+
+# Sources
+
+* [superCollider] (http://supercollider.github.io/)
+* [Java-Websockets] (https://github.com/TooTallNate/Java-WebSocket)
