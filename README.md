@@ -15,21 +15,28 @@ It works both on Windows AND Linux !
 ```
 $> javac -classpath . *.java
 $> jar cvfm launcher.jar META-INF/MANIFEST.MF *.class
-$> java -cp ./launcher.jar network.Server_Socket
+$> java -cp ./launcher.jar network.Server_Socket [port number]
 ```
 
 * __Windows users :__
 ```
 $> javac -classpath . *.java
 $> jar cvfm launcher.jar META-INF/MANIFEST.MF *.class
-$> java -cp ./launcher.jar network.Server_Socket_Windows
+$> java -cp ./launcher.jar network.Server_Socket_Windows [port number]
 ```
 
 __2 - Client side webApp :__
 
-You may change 2 datas in js/firebase.js and in js/socket.js<br/>
+You may change 2 datas in js/firebase.js and in js/socket.js
+
 * In js/firebase.js you may replace the firebase address by yours
+```javascript
+var firepadRef = new Firebase('https://sizzling-fire-5635.firebaseio.com/');
+```
 * In js/socket.js you may replace the websocket address by yours.
+```javascript
+var webSocket = new WebSocket("ws://localhost:8887");
+```
 
 Then just launch index.html in your favorite web browser (works only in the latest versions of Chrome, IE, Firefox and Safari)
 
