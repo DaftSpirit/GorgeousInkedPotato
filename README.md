@@ -48,7 +48,7 @@ type sclang commands in the pad. To validate and send commands you have two ways
 
 Have fun using GorgeousInkedPotato ! =)
 
-[!gif] (http://jorisrat.me/wp-content/uploads/2015/11/potato.gif)
+[!gif] (potato.gif)
 
 # How is GIP made :
 
