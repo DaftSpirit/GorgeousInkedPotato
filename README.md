@@ -2,6 +2,7 @@
 
   GorgeousInkedPotato (GIP) is an open-source web application used to LiveCode in a collaborative way.
   Just launch your browser edit your code and... TADAA !! sound ! (yay !)
+  ![gif] (potato.gif)
 
 # How to use GIP :
 
