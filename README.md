@@ -5,23 +5,27 @@
 
 # How to use GIP :
 
-<b>1 - Server side application :</b>
+__1 - Server side application :__
 
 Just compile the java sources and launch your server side app.
 You can chose the port of listenning by adding a parameter when you launch your server.
 It works both on Windows AND Linux !
 
-* <b> Linux users : </b>
-- javac -classpath . *.java
-- jar cvfm launcher.jar META-INF/MANIFEST.MF *.class
-- java -cp ./launcher.jar network.Server_Socket
+* __Linux users :__
+```
+$> javac -classpath . *.java
+$> jar cvfm launcher.jar META-INF/MANIFEST.MF *.class
+$> java -cp ./launcher.jar network.Server_Socket
+```
 
-* <b> Windows users : </b>
-- javac -classpath . *.java
-- jar cvfm launcher.jar META-INF/MANIFEST.MF *.class
-- java -cp ./launcher.jar network.Server_Socket_Windows
+* __Windows users :__
+```
+$> javac -classpath . *.java
+$> jar cvfm launcher.jar META-INF/MANIFEST.MF *.class
+$> java -cp ./launcher.jar network.Server_Socket_Windows
+```
 
-<b>2 - Client side webApp :</b>
+__2 - Client side webApp :__
 
 You may change 2 datas in js/firebase.js and in js/socket.js<br/>
 * In js/firebase.js you may replace the firebase address by yours
