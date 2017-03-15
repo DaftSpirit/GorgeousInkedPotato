@@ -1,4 +1,4 @@
-![gif] (potato.gif)
+![gif](potato.gif)
 # GorgeousInkedPotato
 
   GorgeousInkedPotato (GIP) is an open-source web application used to LiveCode in a collaborative way.
